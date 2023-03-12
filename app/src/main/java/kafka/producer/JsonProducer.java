@@ -28,7 +28,7 @@ public class JsonProducer {
         props = KafkaConfig.getProducerConfig();
     }
 
-    public List<Ride> getRides() throws IOException {
+    public List<Ride> getRides() throws IOException, CsvException {
         var ridesStream = this.getClass().getResource("/rides.csv");
         var reader = new CSVReader(new FileReader(ridesStream.getFile()));
         reader.skip(1);

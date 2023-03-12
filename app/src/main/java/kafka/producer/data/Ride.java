@@ -4,7 +4,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Ride {
-    public Ride(String[] arr) {
+    public Ride(String[] arr) 
+    {
         VendorID = arr[0];
         tpep_pickup_datetime = LocalDateTime.parse(arr[1], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         tpep_dropoff_datetime = LocalDateTime.parse(arr[2], DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
@@ -24,7 +25,7 @@ public class Ride {
         total_amount = Double.parseDouble(arr[16]);
         congestion_surcharge = Double.parseDouble(arr[17]);
     }
-    public Ride(){}
+    
     public String VendorID;
     public LocalDateTime tpep_pickup_datetime;
     public LocalDateTime tpep_dropoff_datetime;
