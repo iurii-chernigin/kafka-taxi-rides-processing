@@ -34,7 +34,7 @@ public class KafkaConfig {
     
     public static Properties getStreamingConfig() {
 
-        final String applicationID = "kafka_streaming.rides_location_counters.v1";
+        final String applicationID = "kafka_streaming.rides_location_counters.v3";
 
         props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
         props.put("security.protocol", "SASL_SSL");

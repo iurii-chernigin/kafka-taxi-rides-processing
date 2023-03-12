@@ -26,6 +26,8 @@ public class Ride {
         congestion_surcharge = Double.parseDouble(arr[17]);
     }
     
+    public Ride(){}
+
     public String VendorID;
     public LocalDateTime tpep_pickup_datetime;
     public LocalDateTime tpep_dropoff_datetime;
