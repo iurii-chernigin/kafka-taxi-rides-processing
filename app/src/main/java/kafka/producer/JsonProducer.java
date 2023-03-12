@@ -21,14 +21,14 @@ import java.util.stream.Collectors;
 
 public class JsonProducer {
     
-    private static final String rides_topic = Topics.RIDES_TOPIC;
+    private static final String ridesOutTopic = Topics.RIDES_TOPIC;
     private static Properties props = new Properties();
 
     public JsonProducer() {
         props = KafkaConfig.getProducerConfig();
     }
 
-    public List<Ride> getRides() throws IOException {
+    public List<Ride> getRides() throws IOException, CsvException {
         var ridesStream = this.getClass().getResource("/rides.csv");
         var reader = new CSVReader(new FileReader(ridesStream.getFile()));
         reader.skip(1);
@@ -44,15 +44,15 @@ public class JsonProducer {
             ride.tpep_pickup_datetime = LocalDateTime.now().minusMinutes(20);
             ride.tpep_dropoff_datetime = LocalDateTime.now();
             var record = kafkaProducer.send(
-                new ProducerRecord<>(rides_topic, String.valueOf(ride.DOLocationID), ride), 
+                new ProducerRecord<>(ridesOutTopic, String.valueOf(ride.DOLocationID), ride), 
                 (metadata, exception) -> {
                     if(exception != null) {
                         System.out.println(exception.getMessage());
                     }
                 }
             );
-            System.out.println(record.get().offset());
-            System.out.println(ride.DOLocationID);
+            System.out.println("\nOffset: " + record.get().offset());
+            System.out.println("DoLocationID: " + ride.DOLocationID);
             Thread.sleep(500);
         }
         kafkaProducer.close();
