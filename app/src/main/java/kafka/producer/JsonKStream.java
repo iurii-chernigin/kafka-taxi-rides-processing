@@ -16,9 +16,10 @@ public class JsonKStream {
     private static Properties props = new Properties();
     private static String inputRidesTopic;
     private static String outputRidesCountersTopic;
+    private static final String applicationID = "kafka_streaming.rides_location_counters.v3";
 
     public JsonKStream() {
-        props = KafkaConfig.getStreamingConfig();
+        props = KafkaConfig.getStreamingConfig(applicationID);
         inputRidesTopic = Topics.RIDES_TOPIC;
         outputRidesCountersTopic = Topics.RIDES_COUNTERS_TOPIC;
     }
