@@ -5,6 +5,6 @@
     "fields": [
         {"name": "vendor_id", "type": "int", "doc": "A code indicating the LPEP provider that provided the record."},
         {"name": "passenger_count", "type": "int"},
-        {"name": "trip_distance", "tupe": "double"}
+        {"name": "trip_distance", "type": "double"}
     ]
 }
